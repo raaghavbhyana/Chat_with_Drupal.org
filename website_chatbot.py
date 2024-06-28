@@ -17,13 +17,13 @@ def url_extractor(url):
     document=loader.load()
     text_splitter=RecursiveCharacterTextSplitter()
     document_chunks =text_splitter.split_documents(document)
-    embeddings=HuggingFaceInferenceAPIEmbeddings(api_key="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",model_name="sentence-transformers/all-MiniLM-l6-v2")
+    embeddings=HuggingFaceInferenceAPIEmbeddings(api_key="",model_name="sentence-transformers/all-MiniLM-l6-v2")
     vector_store = FAISS.from_documents(documents=document_chunks,embedding=embeddings)
     return vector_store
    
 
 def get_retriever_chain(vector_store):
-    llm=ChatGoogleGenerativeAI(model="gemini-1.5-pro",google_api_key="AIzaSyCc2lKPATzfvBbHX6E5bGEtiYnWVxPnLUs")
+    llm=ChatGoogleGenerativeAI(model="gemini-1.5-pro",google_api_key="")
     retriever=vector_store.as_retriever()
     prompt = ChatPromptTemplate.from_messages([
       MessagesPlaceholder(variable_name="chat_history"),
@@ -37,7 +37,7 @@ def get_retriever_chain(vector_store):
 
 def get_conversational_rag_chain(retriever_chain): 
     
-    llm =ChatGoogleGenerativeAI(model="gemini-1.5-flash",google_api_key="AIzaSyCc2lKPATzfvBbHX6E5bGEtiYnWVxPnLUs")
+    llm =ChatGoogleGenerativeAI(model="gemini-1.5-flash",google_api_key="")
     
     prompt = ChatPromptTemplate.from_messages([
       ("system", "Answer the user's questions based on the below context:\n\n{context}"),
