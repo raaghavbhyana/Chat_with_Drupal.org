@@ -1,0 +1,12 @@
+langchain 
+sentence_transformers
+huggingface-hub
+langchain_community 
+langchain_core
+faiss-cpu 
+tiktoken
+streamlit
+langchain-google-genai 
+pillow
+llam-aindex
+beautifulsoup4
